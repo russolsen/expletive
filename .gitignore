@@ -4,6 +4,7 @@
 .config
 .yardoc
 .rspec
+.ruby_version
 README.html
 Gemfile.lock
 InstalledFiles
