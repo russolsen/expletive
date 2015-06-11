@@ -57,14 +57,14 @@ $ undump < ls.dump > ls.new
 
 The format of the dumped files is as simple as my small mind can make it:
 
-* Backslashes get converted to double backslashes, so \ becomes \\.
+* Backslashes get converted to double backslashes, so \ becomes \\\\.
 
 * Newlines get converted to \n - that's a backslash character followed by an "n".
 
 * Any byte that looks like a simple, human readable single byte character is written as is.
 
 * Otherwise the byte is written as a backslash followed by a two digit hex number. Note
-that this number needs to be zero filled: It's \03, not \3.
+that this number is zero filled: It's always \03, never \3.
 
 * The `exdump` command will periodically insert actual newlines into the output to make
 it more readable. Actual newlines are ignored by `exundump`.
