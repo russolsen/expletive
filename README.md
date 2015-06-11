@@ -1,15 +1,15 @@
 # Expletive
 
 
-&copy; 2012 Relevance Inc
+&copy; 2015 Russ Olsen
 
 **Expletive** is a simple pair of utilities that allow you to dump a file -- presumably a binary file -- into a 
 a plain text format that you can edit. The trick is that as long as you follow the expletive conventions as
 you edit you can turn your plain text back into a binary file. So expletive has all the charm of your typical
-hex editor, *without having to learn a new editor*. Just use vim or emacs or lighttable or any other editor
+hex editor, *without having to learn a new editor*. Just use vim or emacs or lightTable or any other editor
 of your choice.
 
-And the name... Well by the time I come to having to edit a binary file I'm using muttering some bad words.
+And the name... Well typically by the time I come to having to edit a binary file I'm usually muttering some bad words.
 
 ## Installation
 
@@ -35,8 +35,18 @@ edit the `ls` command, I would do something like:
 $ dump < /bin/ls >ls.dump
 ```
 
+What you will end up with in `ls.dump` will be plain text, albeit somewhat intimidating plain text:
+
+    \cf\fa\ed\fe\07\00\00\01\03\00\00\80\02\00\00\00\13\00\00\00\18
+    \07\00\00\85\00 \00\00\00\00\00\19\00\00\00H\00\00\00__PAGEZE
+    RO\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\01\00
+    \00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00
+    \00\00\00\00\00\00\00\00\00\00\00\00\00\19\00\00\00(\02\00\00
+    __TEXT\00\00\00\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\00
+
+ 
 You can then edit the `ls.dump` file, making any changes you desire. Once you are
-done you can turn your data back into binary with `exundump`.
+done you can turn your modified text back into binary with `exundump`.
 
 
 ```sh
@@ -64,7 +74,7 @@ That's it!
 ### An Example
 
 Have you ever noticed that when you do `ls -l` in your terminal, `ls` prints
-the total number of bytes are the top of the output?
+the total number of bytes at the top of the output?
 
 ```shell
 ~/projects/ruby/expletive: ls -l
@@ -76,6 +86,7 @@ total 304
 -rw-r--r--  1 russolsen  staff   1067 Jun 10 08:56 LICENSE
 ...
 ```
+
 Now imagine that for some obscure reason you wanted to make that
 *total* show up as *YOOO!*. Nothing to it. First dump the contents
 of the (very binary) `ls` command to some file:
@@ -106,12 +117,12 @@ change *total* to *YOOO!* or some other amusing string:
      \00%3d, %3d \00%*s%*qu \00, \00printcol\00dp->list\00base <·
 
 
-Note that need to make sure that your new string is the same length as the
+Note that you need to make sure that your new string is the same length as the
 old one (e.g. total) because executables contain counts and offsets
 that you don't want to mess up.
 
 Having made your change, you just need to convert your dump file back
-to a binary. But don't overwrite your system's `ls` command:
+to a binary. But don't overwrite your system's `ls` command!
 
 ```shell
 exundump <ls.dump >ls.new
@@ -135,6 +146,8 @@ YOOO! 312
 
 ```
 
+One final note: With the power to edit binaries, easily and with your favorite text editor,
+comes great responsibility.
 
 ## Contributors
 
