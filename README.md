@@ -4,7 +4,7 @@
 &copy; 2015 Russ Olsen
 
 **Expletive** is a simple pair of utilities that allow you to dump a file -- presumably a binary file -- into a 
-a plain text format that you can edit. The trick is that as long as you follow the expletive conventions as
+plain text format that you can edit. The trick is that as long as you follow the expletive conventions as
 you edit you can turn your plain text back into a binary file. So expletive has all the charm of your typical
 hex editor, *without having to learn a new editor*. Just use vim or emacs or lightTable or any other editor
 of your choice.
