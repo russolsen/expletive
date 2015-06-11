@@ -32,7 +32,7 @@ turn it into something you can edit with an ordinary text editor. For example, i
 edit the `ls` command, I would do something like:
 
 ```sh
-$ dump < /bin/ls >ls.dump
+$ exdump < /bin/ls >ls.dump
 ```
 
 What you will end up with in `ls.dump` will be plain text, albeit somewhat intimidating plain text:
@@ -50,7 +50,7 @@ done you can turn your modified text back into binary with `exundump`.
 
 
 ```sh
-$ undump < ls.dump > ls.new
+$ exundump < ls.dump > ls.new
 ```
 
 ### The Dump File Format
